@@ -110,7 +110,7 @@ export const Sidebar = () => {
                 {' '}
                 <MailIcon />{' '}
               </ListItemIcon>
-              <ListItemText primary={'Main'} />
+              <ListItemText primary={'Year'} />
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding onClick={() => navigate(routeDayPage())}>
@@ -119,7 +119,7 @@ export const Sidebar = () => {
                 {' '}
                 <MailIcon />{' '}
               </ListItemIcon>
-              <ListItemText primary={'Day'} />
+              <ListItemText primary={'Month'} />
             </ListItemButton>
           </ListItem>
         </List>
