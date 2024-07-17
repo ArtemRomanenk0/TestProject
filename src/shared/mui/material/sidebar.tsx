@@ -20,6 +20,7 @@ import MailIcon from '@mui/icons-material/Mail'
 import { useState } from 'react'
 import { routeMain as routeDayPage } from 'pages/DayPage/DayPage'
 import { useNavigate } from 'react-router-dom'
+import { routeMain as routeTestPage } from 'pages/TestPage/TestPage'
 import routeMain from 'pages/MainPage/routes'
 
 const drawerWidth = 240
@@ -120,6 +121,15 @@ export const Sidebar = () => {
                 <MailIcon />{' '}
               </ListItemIcon>
               <ListItemText primary={'Month'} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding onClick={() => navigate(routeTestPage())}>
+            <ListItemButton>
+              <ListItemIcon>
+                {' '}
+                <MailIcon />{' '}
+              </ListItemIcon>
+              <ListItemText primary={'Test'} />
             </ListItemButton>
           </ListItem>
         </List>

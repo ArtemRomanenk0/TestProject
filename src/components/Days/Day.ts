@@ -1,74 +1,54 @@
 import dayjs from 'dayjs'
 
+import { Dayjs } from 'dayjs'
 import 'dayjs/locale/ru'
 import arraySupport from 'dayjs/plugin/arraySupport'
 import duration from 'dayjs/plugin/duration'
 import updateLocale from 'dayjs/plugin/updateLocale'
+import isLeapYear from 'dayjs/plugin/isLeapYear'
+import weekday from 'dayjs/plugin/weekday'
+import localeData from 'dayjs/plugin/localeData'
 
 dayjs.extend(duration)
 dayjs.extend(updateLocale)
 dayjs.extend(arraySupport)
+dayjs.extend(isLeapYear)
+dayjs.extend(weekday)
+dayjs.extend(localeData)
 
-const daysInWeek = 7
-const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-// const WEEK_DAYS_FROM_MONDAY = [6, 0, 1, 2, 3, 4, 5]
+dayjs.locale('ru')
 
-const Month = {
-  January: 0,
-  February: 1,
-  March: 2,
-  April: 3,
-  May: 4,
-  June: 5,
-  July: 6,
-  August: 7,
-  September: 8,
-  October: 9,
-  November: 10,
-  December: 11,
-}
 
-export const isLeapYear = (year: number) => {
-  return !(year % 4 || (!(year % 100) && year % 400))
-}
 
-export const getDaysInMonth = (date: number | any) => {
-  const month = dayjs(date).get('month')
-  const year = dayjs(date).get('year')
-  const dayInMonth = daysInMonth[month]
 
-  if (isLeapYear(year) && month === Month.February) {
-    return dayInMonth + 1
+const calcGridLengthByMonth = (num: number) => {
+  if (num % 7 === 0) {
+    return num
   } else {
-    return dayInMonth
+    return Math.ceil(num / 7) * 7
   }
 }
 
-export const getDayOfWeek = (date: number | any) => {
-  const dayOfWeek = dayjs(date).day()
-  return dayOfWeek
+const checkSunday = (num: number) => {
+	if (num < 0) {
+		return num = 6
+	} else
+	return num
 }
 
-export const getMonthDate = (year: number, month: number) => {
-  const result: any = []
+export const testFunc = (year: number, month: number) => {
   const date = dayjs([year, month])
-  const daysInMonths = getDaysInMonth(date)
-  const monthStartsOn = getDayOfWeek(date)
+  const daysInMonths = dayjs(date).daysInMonth() //сколько дней в месяце, нужно для шифта
+  const monthStartsOn = dayjs(date).day() //начало дня, нужно для шифта
+  const correctMonthStartsOn = checkSunday(monthStartsOn - 1)
+	const arrayLength = daysInMonths + correctMonthStartsOn 
+console.log(correctMonthStartsOn)
 
-  let day = 1
+  const test = Array.from(Array(calcGridLengthByMonth(arrayLength)), (day, index) =>
+    index + 1 > correctMonthStartsOn && index < daysInMonths + correctMonthStartsOn
+      ? dayjs([year, month, index + 1 - correctMonthStartsOn])
+      : null
+  )
 
-  for (let i = 0; i < (daysInMonths + monthStartsOn) / daysInWeek; i++) {
-    result[i] = []
-
-    for (let j = 0; j < daysInWeek; j++) {
-      if ((i === 0 && j < monthStartsOn) || day > daysInMonths) {
-        result[i][j] = undefined
-      } else {
-        let days = day++
-        result[i][j] = dayjs([year, month, days])
-      }
-    }
-  }
-
-  return result
+  return test
 }
