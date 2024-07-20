@@ -3,15 +3,13 @@ import dayjs, { Dayjs } from 'dayjs'
 import 'dayjs/locale/ru'
 
 import updateLocale from 'dayjs/plugin/updateLocale'
-import styles from './StyleYear.module.scss'
 import { untilsDayDataFind } from '../../shared/untild/untilsDayDataFind'
+import styles from './StyleDay.module.scss'
 
-export const YearData = () => {
+export const DayData = () => {
   dayjs.extend(updateLocale)
 
-  dayjs.updateLocale('ru', {
-    weekdaysMin: ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'],
-  })
+  const b: string | any = dayjs.updateLocale('ru', {})
 
   return (
     <div className={styles.grid}>

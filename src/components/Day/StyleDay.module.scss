@@ -1,6 +1,6 @@
 .day{
   display: grid;
-  grid-template-columns: 25px 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 25px repeat(6, 1fr);
   grid-template-rows: 20px;
 }
 .grid {
@@ -14,5 +14,5 @@
 
 .week {
   display: grid;
-  grid-template-columns: 25px 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 25px repeat(6, 1fr);
 }

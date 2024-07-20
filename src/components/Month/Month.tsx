@@ -3,8 +3,8 @@ import dayjs, { Dayjs } from 'dayjs'
 import 'dayjs/locale/ru'
 
 import updateLocale from 'dayjs/plugin/updateLocale'
-import styles from './StyleFileName.module.scss'
-import { testFunc } from '../Days/Day'
+import styles from './StyleMonth.module.scss'
+import { untilsDayDataFind } from '../../shared/untild/untilsDayDataFind'
 import { useState } from 'react'
 
 export const MonthData = () => {
@@ -44,7 +44,7 @@ export const MonthData = () => {
           ))}
         </div>
         <div className={styles.day}>
-          {testFunc(2024, months).map((date: any, index: any) =>
+          {untilsDayDataFind(2024, months).map((date: Dayjs | null, index: number) =>
             date ? (
               <div className={styles.day} key={index}>
                 {dayjs(date).date()}

@@ -1,13 +1,14 @@
-import { MonthData } from 'components/Month/Month'
-import routeMain from './routes'
+
+import { DayData } from 'components/Day/Day'
+import routeDay from './routes'
 import './styles.scss'
 
 export const DayPage = () => {
   return (
-    <div className='DP'>
-      <MonthData/>
+    <div className='TP'>
+      <DayData/>
     </div>
   )
 }
 
-export { routeMain }
+export { routeDay }

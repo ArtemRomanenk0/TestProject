@@ -1,3 +1,3 @@
-const routeMain = () => '/day'
+const routeDay = () => '/day'
 
-export default routeMain
+export default routeDay

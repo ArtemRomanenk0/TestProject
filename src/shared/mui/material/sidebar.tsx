@@ -18,9 +18,9 @@ import ListItemText from '@mui/material/ListItemText'
 
 import MailIcon from '@mui/icons-material/Mail'
 import { useState } from 'react'
-import { routeMain as routeDayPage } from 'pages/DayPage/DayPage'
+import { routeMonth as routeMonthPage } from 'pages/MonthPage/MonthPage'
 import { useNavigate } from 'react-router-dom'
-import { routeMain as routeTestPage } from 'pages/TestPage/TestPage'
+import { routeDay as routeDayPage } from 'pages/DayPage/DayPage'
 import routeMain from 'pages/MainPage/routes'
 
 const drawerWidth = 240
@@ -114,7 +114,7 @@ export const Sidebar = () => {
               <ListItemText primary={'Year'} />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding onClick={() => navigate(routeDayPage())}>
+          <ListItem disablePadding onClick={() => navigate(routeMonthPage())}>
             <ListItemButton>
               <ListItemIcon>
                 {' '}
@@ -123,13 +123,13 @@ export const Sidebar = () => {
               <ListItemText primary={'Month'} />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding onClick={() => navigate(routeTestPage())}>
+          <ListItem disablePadding onClick={() => navigate(routeDayPage())}>
             <ListItemButton>
               <ListItemIcon>
                 {' '}
                 <MailIcon />{' '}
               </ListItemIcon>
-              <ListItemText primary={'Test'} />
+              <ListItemText primary={'Day'} />
             </ListItemButton>
           </ListItem>
         </List>
