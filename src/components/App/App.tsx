@@ -1,8 +1,8 @@
-import AppContent from 'components/AppContent/AppContent'
+import {AppContent} from 'components/AppContent/AppContent'
 import { BrowserRouter } from 'react-router-dom'
 
 
-const App = () => {
+export  const App = () => {
   return (
     <BrowserRouter>
       <AppContent />
@@ -10,4 +10,3 @@ const App = () => {
   )
 }
 
-export default App
